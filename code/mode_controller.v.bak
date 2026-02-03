@@ -1,0 +1,104 @@
+module mode_controller(
+	input unlock,
+	input swx_n,
+	input swm,
+	output rledx,
+	output gledx,
+	output mode
+);
+	/** 
+	mode controller is a ASM for controlling super and
+	sub-states of the digital_lock_system, with two super-states
+	`LOCKED` and `UNLOCKED` and `UNLOCKED` having a substate of 
+	`UNLOCKED_PROGRAMMING` where this is where we have functionality
+	enbaled for changing the code for unlocking the safe.
+	output mapping is purely based on the current state we are in 
+	therefore this is a Mealy State Machine.
+	
+	Args: 
+		unlock: boolean
+			represents if an unlock event has occured
+		swx_n: boolean
+			represents if reset switch press active low event has occured 
+		swm: boolean 
+			represents if mode switch event has occured 
+		
+	Outputs: 
+		rledx: boolean
+			led actuation toggler representing digital_lock_system LOCKED or UNLOCKED_PROGRAMMING
+		gledx: boolean 
+			led acutation toggler represneting digital_lock_system in UNLOCKED or UNLOCKED_PROGRAMMING
+		MODE: 2 bit state encoding
+			outputs the current state value
+	**/
+	
+	// ----------------------
+	// 1. State encoding
+	// ---------------------
+	localparam LOCKED = 2'b00,
+				  UNLOCKED =2'b01,
+				  UNLOCKED_PROGRAMMING = 2'b10
+				  
+	reg [1:0] state;
+	reg [1:0] next_state;
+	
+	// ----------------------
+	// 2. State Register, occurs on swx or clk posedge
+	// ----------------------
+	
+	always @(posedge clk or negedge swx_n) begin 
+		if (!swx_n) 
+			state <= LOCKED;
+		else 
+			state <= next_state;
+	end
+	
+	// ---------------------
+	// 3. Next-state logic (combination block-operates continously)
+	// ---------------------
+	
+	always @(*) begin
+		next_state = state;
+		
+		case (state)
+			LOCKED: begin
+				if (unlock)
+					next_state = UNLOCKED; 
+			end
+			
+			UNLOCKED: begin 
+				if (keya)
+					next_state = LOCKED;
+				
+				if (swm)
+					next_state = UNLOCKED_PROGRAMMING;
+				end
+			end
+			
+			UNLOCKED_PROGRAMMING: begin
+				if (keya) 
+					next_state = LOCKED;
+				
+				if (swm) 
+					next_state = UNLOCKED;
+			end
+		endcase
+	end 
+	
+	
+	// -----------------
+	// 4. Moore Style output mapping
+	// -----------------
+	always @(*) begin
+		// Output mapping for `LOCKED `
+		gledx = (state == UNLOCKED | state == UNLOCKED_PROGRAMMING); 
+		rledx = (state = LOCKED | state == UNLOCKED_PROGRAMMING);
+		
+		
+		// Output mapping for `UNLOCKED`
+		
+		// Output mapping for `UNLOCKED_PROGRAMMING`
+	end
+	
+
+endmodule
