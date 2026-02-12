@@ -1,0 +1,61 @@
+/** 
+A digital FPGA design for a locking system
+the top level module being digital_lock_system with
+several different configurations depending on input.
+**/
+
+module digital_lock_system(
+    input  swx_n,
+    input  swm,
+    input  keya,
+    input  keyb,
+    input  keyc, 
+    input  keyd,
+    input  clk,
+    output rledx,
+    output gledx,
+    output [6:0] hexx_y
+);
+
+    // Internal wire signals
+    wire unlock_signal;
+
+    // -----------------------------
+    // Instantiate mode_controller
+	 
+	 wire [1:0] mode_signal;
+	 wire [15:0] code_signal;
+	 
+    ModeController u_mode_controller (
+        .unlock (unlock_signal), // **input**
+        .swx_n  (swx_n),
+        .swm    (swm),
+        .keya   (keya),
+        .clk    (clk),
+
+        .rledx  (rledx),         // **output**
+        .gledx  (gledx),
+        .mode   (mode_signal)
+    );
+	 
+	 CodeEntry u_code_entry (
+        .clk(clk),                  // **inputs** 
+        .rst_n(swx_n),
+        .current_mode(mode_signal),
+        .keyb_s(keyb),
+        .keyc_s(keyc),
+        .keyd_s(keyd),
+        
+        .code(code_signal)          // **outputs**
+	 );
+	 
+	 CodeControl u_code_control(
+        .current_mode(mode_signal),  // **inputs**
+        .current_code(code_signal),
+        .keya(keya),
+        .rst_n(swx_n),
+        .clk(clk),
+        
+        .unlock(unlock_signal)       // **outputs**
+	 );
+ endmodule

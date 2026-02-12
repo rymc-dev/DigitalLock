@@ -1,0 +1,93 @@
+`timescale 1ns/1ps
+
+module ModeController_tb;
+    // ======================
+    // Testbench Signals
+    // ======================
+    reg unlock;
+    reg swx_n;
+    reg swm;
+    reg keya;
+    reg clk;
+    wire rledx;
+    wire gledx;
+    wire [1:0] mode;
+    
+    // ======================
+    // Instantiate DUT
+    // ======================
+    ModeController DUT (
+        .unlock (unlock),
+        .swx_n  (swx_n),
+        .swm    (swm),
+        .keya   (keya),
+        .clk    (clk),
+        .rledx  (rledx),
+        .gledx  (gledx),
+        .mode   (mode)
+    );
+    
+    // ======================
+    // Clock Generator
+    // ======================
+    initial begin
+        clk = 0;
+        forever #10 clk = ~clk;   // 20ns period (50MHz equivalent sim clock)
+    end
+    
+    // ======================
+    // Stimulus
+    // ======================
+    initial begin
+        // Initial values
+        unlock = 0;
+        swx_n  = 0;
+        swm    = 0;
+        keya   = 0;
+        
+        // ------------------
+        // Apply Reset
+        // ------------------
+        #50;
+        swx_n = 1;   // Release reset
+        
+        // ------------------
+        // Try Unlock
+        // ------------------
+        #40;
+        #2; unlock = 1;
+        #20;
+        #2; unlock = 0;
+        
+        // ------------------
+        // Enter Programming Mode
+        // ------------------
+        #60;
+        #2; swm = 1;
+        #20;
+        #2; swm = 0;
+        
+        // ------------------
+        // Exit Programming (back to UNLOCKED)
+        // ------------------
+        #60;
+        #2; swm = 1;
+        #20;
+        #2; swm = 0;
+        
+        // ------------------
+        // Lock Again
+        // ------------------
+        #60;
+        #2; keya = 1;
+        #20;
+        #2; keya = 0;
+        
+        // ------------------
+        // End Simulation
+        // ------------------
+        #200;
+        $finish;
+    end
+    
+endmodule

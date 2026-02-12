@@ -1,0 +1,421 @@
+$date
+	Wed Feb 11 20:26:01 2026
+$end
+$version
+	ModelSim Version 10.1d
+$end
+$timescale
+	1ps
+$end
+$scope module CodeEntry_tb $end
+$var reg 1 ! clk $end
+$var reg 1 " rst_n $end
+$var reg 2 # current_mode [1:0] $end
+$var reg 1 $ keyb_s $end
+$var reg 1 % keyc_s $end
+$var reg 1 & keyd_s $end
+$var wire 1 ' code [15] $end
+$var wire 1 ( code [14] $end
+$var wire 1 ) code [13] $end
+$var wire 1 * code [12] $end
+$var wire 1 + code [11] $end
+$var wire 1 , code [10] $end
+$var wire 1 - code [9] $end
+$var wire 1 . code [8] $end
+$var wire 1 / code [7] $end
+$var wire 1 0 code [6] $end
+$var wire 1 1 code [5] $end
+$var wire 1 2 code [4] $end
+$var wire 1 3 code [3] $end
+$var wire 1 4 code [2] $end
+$var wire 1 5 code [1] $end
+$var wire 1 6 code [0] $end
+$scope module DUT $end
+$var wire 1 7 clk $end
+$var wire 1 8 rst_n $end
+$var wire 1 9 current_mode [1] $end
+$var wire 1 : current_mode [0] $end
+$var wire 1 ; keyb_s $end
+$var wire 1 < keyc_s $end
+$var wire 1 = keyd_s $end
+$var wire 1 ' code [15] $end
+$var wire 1 ( code [14] $end
+$var wire 1 ) code [13] $end
+$var wire 1 * code [12] $end
+$var wire 1 + code [11] $end
+$var wire 1 , code [10] $end
+$var wire 1 - code [9] $end
+$var wire 1 . code [8] $end
+$var wire 1 / code [7] $end
+$var wire 1 0 code [6] $end
+$var wire 1 1 code [5] $end
+$var wire 1 2 code [4] $end
+$var wire 1 3 code [3] $end
+$var wire 1 4 code [2] $end
+$var wire 1 5 code [1] $end
+$var wire 1 6 code [0] $end
+$var wire 1 > direction_logic_valid $end
+$var wire 1 ? direction_logic_dir $end
+$var wire 1 @ single_pulse_out $end
+$var wire 1 A counter_digit [3] $end
+$var wire 1 B counter_digit [2] $end
+$var wire 1 C counter_digit [1] $end
+$var wire 1 D counter_digit [0] $end
+$var wire 1 E mode_change_reset $end
+$var wire 1 F rst_code_shift_register_inst_n $end
+$scope module mode_change_detector_inst $end
+$var wire 1 7 clk $end
+$var wire 1 8 rst_n $end
+$var wire 1 9 current_mode [1] $end
+$var wire 1 : current_mode [0] $end
+$var reg 1 G is_mode_change $end
+$var reg 2 H previous_mode [1:0] $end
+$upscope $end
+$scope module direction_logic_inst $end
+$var parameter 1 I DIR_UP $end
+$var parameter 1 J DIR_DOWN $end
+$var parameter 1 K IS_VALID $end
+$var parameter 1 L NOT_VALID $end
+$var wire 1 ; up $end
+$var wire 1 < down $end
+$var reg 1 M dir $end
+$var reg 1 N valid $end
+$upscope $end
+$scope module single_pulse_inst $end
+$var wire 1 7 clk $end
+$var wire 1 8 rst_n $end
+$var wire 1 > trigger $end
+$var reg 1 O pulse $end
+$var reg 1 P trigger_d $end
+$upscope $end
+$scope module up_down_counter_inst $end
+$var wire 1 7 clk $end
+$var wire 1 8 rst_n $end
+$var wire 1 ? ud $end
+$var wire 1 @ trigger $end
+$var reg 4 Q count [3:0] $end
+$upscope $end
+$scope module code_shift_register_inst $end
+$var wire 1 A digit [3] $end
+$var wire 1 B digit [2] $end
+$var wire 1 C digit [1] $end
+$var wire 1 D digit [0] $end
+$var wire 1 F rst_n $end
+$var wire 1 = shift $end
+$var wire 1 7 clk $end
+$var reg 16 R code [15:0] $end
+$var reg 2 S segment [1:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0!
+0"
+b0 #
+0$
+0%
+0&
+0G
+b0 H
+0M
+0N
+0O
+0P
+b0 Q
+b0 R
+b0 S
+b1 I
+b0 J
+b1 K
+b0 L
+06
+05
+04
+03
+02
+01
+00
+0/
+0.
+0-
+0,
+0+
+0*
+0)
+0(
+0'
+0>
+0?
+0@
+0D
+0C
+0B
+0A
+0E
+0F
+0=
+0<
+0;
+0:
+09
+08
+07
+$end
+#10000
+1!
+17
+#20000
+0!
+07
+#25000
+1"
+18
+1F
+#30000
+1!
+17
+#40000
+0!
+07
+#45000
+1$
+1;
+1M
+1N
+1?
+1>
+#50000
+1!
+17
+1P
+1O
+1@
+#60000
+0!
+07
+#70000
+0$
+1!
+0;
+17
+0M
+0N
+0?
+0>
+0O
+b1 Q
+0@
+1D
+#80000
+0!
+07
+#90000
+1%
+1!
+1<
+17
+1N
+1>
+0P
+b1000000000000 R
+1*
+#100000
+0!
+07
+#110000
+0%
+1!
+0<
+17
+0N
+0>
+1P
+1O
+1@
+#120000
+0!
+07
+#130000
+1$
+1%
+1!
+1;
+1<
+17
+0P
+0O
+b0 Q
+0@
+0D
+#140000
+0!
+07
+#150000
+0$
+0%
+1!
+0;
+0<
+17
+b0 R
+0*
+#160000
+0!
+07
+#170000
+1$
+1!
+1;
+17
+1M
+1N
+1?
+1>
+#180000
+0!
+07
+#190000
+0$
+1&
+1!
+1=
+0;
+17
+0M
+0N
+0&
+1$
+0?
+0>
+0=
+1;
+1M
+1N
+1?
+1>
+1P
+1O
+b1 S
+1@
+#200000
+0!
+07
+#210000
+1!
+17
+0$
+0;
+0M
+0N
+0?
+0>
+0O
+b1 Q
+0@
+1D
+#220000
+0!
+07
+#230000
+1!
+17
+0P
+b100000000 R
+1.
+#240000
+0!
+07
+#250000
+b1 #
+1!
+1:
+17
+b1 H
+1G
+1E
+0F
+b0 R
+b0 S
+0.
+#260000
+0!
+07
+#270000
+1%
+1!
+1<
+17
+1N
+1>
+0G
+0E
+1F
+#280000
+0!
+07
+#290000
+1!
+17
+1P
+1O
+b1000000000000 R
+1@
+1*
+#300000
+0!
+07
+#310000
+0"
+1!
+08
+17
+0F
+b0 R
+b0 H
+0P
+0O
+b0 Q
+0@
+0D
+0*
+#320000
+0!
+1"
+07
+18
+1F
+#330000
+1!
+17
+b1 H
+1G
+1P
+1O
+1E
+1@
+0F
+#340000
+0!
+07
+#350000
+1!
+17
+0G
+0O
+b1001 Q
+0E
+0@
+1D
+1A
+1F
+#360000
+0!
+07
+#370000
+1!
+17
+b1001000000000000 R
+1*
+1'

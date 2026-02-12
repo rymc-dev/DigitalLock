@@ -1,0 +1,297 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\ryanm\OneDrive\Desktop\ELEC473-Assignment_1\src\simulation\modelsim
+vCodeControl
+Z1 IZ2JgZf0oUF6UES53hLSEo1
+Z2 VOmg;>6H7ZY;GeQ7W2G=ci0
+Z3 dC:\Users\ryanm\OneDrive\Desktop\ELEC473-Assignment_1\src\simulation\modelsim
+Z4 w1770722129
+Z5 8C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control/CodeControl.v
+Z6 FC:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control/CodeControl.v
+L0 17
+Z7 OV;L;10.1d;51
+r1
+31
+Z8 o-vlog01compat -work work -O0
+Z9 n@code@control
+Z10 !s92 -vlog01compat -work work +incdir+C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control -O0
+!i10b 1
+Z11 !s100 [GgAR?ObP81<@iAPLM9512
+!s85 0
+Z12 !s108 1770855693.042000
+Z13 !s107 C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control/CodeControl.v|
+Z14 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control|C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control/CodeControl.v|
+!s101 -O0
+vCodeEntry
+Z15 If;d4mgfZhmcPQH:X5NBgW3
+Z16 V:DgDnK7MTU?e<ljk=7RQ@2
+R3
+Z17 w1770841501
+Z18 8C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry/CodeEntry.v
+Z19 FC:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry/CodeEntry.v
+L0 20
+R7
+r1
+31
+R8
+Z20 !s92 -vlog01compat -work work +incdir+C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry -O0
+Z21 n@code@entry
+!i10b 1
+Z22 !s100 IfaZ_J3GAzE?RB@]KM0m52
+!s85 0
+Z23 !s108 1770855693.000000
+Z24 !s107 C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry/CodeEntry.v|
+Z25 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry|C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry/CodeEntry.v|
+!s101 -O0
+vCodeEqualityChecker
+Z26 Ii0hFc4HEJd@gaH>z<FX:e2
+Z27 Vkjka7<:6G48WW]U3<bNRH2
+R3
+Z28 w1770722055
+Z29 8C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control/CodeEqualityChecker.v
+Z30 FC:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control/CodeEqualityChecker.v
+L0 1
+R7
+r1
+31
+R8
+R10
+Z31 n@code@equality@checker
+!i10b 1
+Z32 !s100 1=bjgnJ:MUWPR0E^5DmUB2
+!s85 0
+Z33 !s108 1770855693.170000
+Z34 !s107 C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control/CodeEqualityChecker.v|
+Z35 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control|C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control/CodeEqualityChecker.v|
+!s101 -O0
+vCodeShiftRegister
+Z36 I3CH^9U2lMLFNf1aXHgg[71
+Z37 VC3BFkcTdCH[MFji7ZAFc31
+R3
+Z38 w1770815846
+Z39 8C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry/CodeShiftRegister.v
+Z40 FC:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry/CodeShiftRegister.v
+L0 1
+R7
+r1
+31
+R8
+R20
+Z41 n@code@shift@register
+!i10b 1
+Z42 !s100 ]0@BCK<MdJ1knbWcEfmH@0
+!s85 0
+Z43 !s108 1770855692.864000
+Z44 !s107 C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry/CodeShiftRegister.v|
+Z45 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry|C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry/CodeShiftRegister.v|
+!s101 -O0
+vCurrentCodeRegistry
+Z46 IK]j7?>XQJ@:e0B=c`oQP<1
+Z47 VJmUl7<7JZg0zD9VaTE>4=2
+R3
+Z48 w1770848376
+Z49 8C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control/CurrentCodeRegistry.v
+Z50 FC:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control/CurrentCodeRegistry.v
+L0 1
+R7
+r1
+31
+R8
+R10
+Z51 n@current@code@registry
+!i10b 1
+Z52 !s100 U[[JDL`H82GF6]Me]<S4i1
+!s85 0
+Z53 !s108 1770855693.083000
+Z54 !s107 C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control/CurrentCodeRegistry.v|
+Z55 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control|C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control/CurrentCodeRegistry.v|
+!s101 -O0
+vdigital_lock_system
+Z56 IcA4zam3cUc3@NJ<O@o^_@1
+Z57 VWXg8iRQ9bn7?6RQ<;ZKd62
+R3
+Z58 w1770852665
+Z59 8C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/digital_lock_system.v
+Z60 FC:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/digital_lock_system.v
+L0 7
+R7
+r1
+31
+R8
+!i10b 1
+Z61 !s100 Rd8XzD[VPFkj=e@Qi=8A:2
+!s85 0
+Z62 !s108 1770855692.912000
+Z63 !s107 C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/digital_lock_system.v|
+Z64 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src|C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/digital_lock_system.v|
+!s101 -O0
+Z65 !s92 -vlog01compat -work work +incdir+C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src -O0
+vDigitalLockSystem_tb
+!i10b 1
+!s100 `640iHB@dd^R=z1Ek_2Pz3
+I[Fg10Q3]L7mO^kS=1i4:=3
+Vz3AfRD6;3>h_>7]fE[8oA3
+R3
+w1770855028
+8C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/tests/DigitalSystem_tb.v
+FC:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/tests/DigitalSystem_tb.v
+L0 13
+R7
+r1
+!s85 0
+31
+!s108 1770855707.338000
+!s107 C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/tests/DigitalSystem_tb.v|
+!s90 -reportprogress|300|C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/tests/DigitalSystem_tb.v|
+!s101 -O0
+o-O0
+n@digital@lock@system_tb
+vDirectionLogic
+Z66 IXE]0QY0cOZZHFS=bBc9A82
+Z67 V;>>c]9<B<0iGF9TXPnWeY0
+R3
+Z68 w1770722367
+Z69 8C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry/DirectionLogic.v
+Z70 FC:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry/DirectionLogic.v
+L0 1
+R7
+r1
+31
+R8
+R20
+Z71 n@direction@logic
+!i10b 1
+Z72 !s100 1WE4bQ^[Fg6N@>zz<L0fz1
+!s85 0
+Z73 !s108 1770855692.825000
+Z74 !s107 C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry/DirectionLogic.v|
+Z75 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry|C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry/DirectionLogic.v|
+!s101 -O0
+vModeChangeDetector
+Z76 ILDc_<:YU1`N8jOCKP`hj32
+Z77 V>B_G6<=60M]cLS79bZ?Wi3
+R3
+Z78 w1770841517
+Z79 8C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry/ModeChangeDetector.v
+Z80 FC:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry/ModeChangeDetector.v
+L0 1
+R7
+r1
+31
+R8
+R20
+Z81 n@mode@change@detector
+!i10b 1
+Z82 !s100 Xgh0QElhP<P9K44GE9bMo3
+!s85 0
+Z83 !s108 1770855692.786000
+Z84 !s107 C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry/ModeChangeDetector.v|
+Z85 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry|C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry/ModeChangeDetector.v|
+!s101 -O0
+vModeController
+Z86 IaXMnJ6km3i8=c<imlfz@33
+Z87 VXO52j;T=J1WmF<B?I2cX_3
+R3
+Z88 w1770719713
+Z89 8C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/mode_controller/ModeController.v
+Z90 FC:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/mode_controller/ModeController.v
+L0 7
+R7
+r1
+31
+R8
+Z91 n@mode@controller
+!i10b 1
+Z92 !s100 b?UL5O4Ig6zBUSFZz=Ef^1
+!s85 0
+Z93 !s108 1770855692.957000
+Z94 !s107 C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/mode_controller/ModeController.v|
+Z95 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/mode_controller|C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/mode_controller/ModeController.v|
+!s101 -O0
+Z96 !s92 -vlog01compat -work work +incdir+C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/mode_controller -O0
+vModeDecoder
+Z97 I_ZziXXk]DoVLoYaL17XME1
+Z98 VV<Sc?>Cc@BIHH[A;aP3X;1
+R3
+Z99 w1770848285
+Z100 8C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control/ModeDecoder.v
+Z101 FC:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control/ModeDecoder.v
+L0 1
+R7
+r1
+31
+R8
+R10
+Z102 n@mode@decoder
+!i10b 1
+Z103 !s100 m[J?j8]d?<OARL0[oOX]:3
+!s85 0
+Z104 !s108 1770855693.126000
+Z105 !s107 C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control/ModeDecoder.v|
+Z106 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control|C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control/ModeDecoder.v|
+!s101 -O0
+vSinglePulse
+Z107 IQQkH=z:=3FF12]a4gSMcE1
+Z108 V``WU8ScV82Q7LiS4cnzUZ3
+R3
+Z109 w1770722422
+Z110 8C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry/SinglePulse.v
+Z111 FC:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry/SinglePulse.v
+L0 1
+R7
+r1
+31
+R8
+R20
+Z112 n@single@pulse
+!i10b 1
+Z113 !s100 _laOfF5EFiQk7EVEmIkFz0
+!s85 0
+Z114 !s108 1770855692.728000
+Z115 !s107 C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry/SinglePulse.v|
+Z116 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry|C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry/SinglePulse.v|
+!s101 -O0
+vUnlockLogic
+Z117 IMeLkTNbgeNe4OcVWmA:EK0
+Z118 V8Za9]2l`^0RcU7giF^HcD1
+R3
+Z119 w1770722085
+Z120 8C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control/UnlockLogic.v
+Z121 FC:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control/UnlockLogic.v
+L0 1
+R7
+r1
+31
+R8
+R10
+Z122 n@unlock@logic
+!i10b 1
+Z123 !s100 SiTD82dWHd1@EPNYRFlz@3
+!s85 0
+Z124 !s108 1770855693.210000
+Z125 !s107 C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control/UnlockLogic.v|
+Z126 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control|C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control/UnlockLogic.v|
+!s101 -O0
+vUpDownCounterWrap
+Z127 IeR;dIl<22zTlmUmfD9jWl2
+Z128 V[R]L`dcJg8i^VY`NT36b<3
+R3
+Z129 w1770732429
+Z130 8C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry/UpDownCounter.v
+Z131 FC:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry/UpDownCounter.v
+L0 1
+R7
+r1
+31
+R8
+Z132 n@up@down@counter@wrap
+R20
+!i10b 1
+Z133 !s100 3e`JZ?]<6H]7n0<SX4jnO3
+!s85 0
+Z134 !s108 1770855692.675000
+Z135 !s107 C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry/UpDownCounter.v|
+Z136 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry|C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry/UpDownCounter.v|
+!s101 -O0

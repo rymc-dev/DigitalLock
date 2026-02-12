@@ -1,0 +1,37 @@
+module UpDownCounterWrap(
+	input wire clk,
+	input wire rst_n,
+	input wire ud,
+	input wire trigger,
+	output reg [3:0] count
+);
+	/*
+		up down counter is a simple wrap around counter which
+		on rising clock edge when a trigger is received we increment
+		or decrement the count based on the input from ud representing up down
+		
+
+		min: 0
+		max: 15
+	*/
+
+	always @(posedge clk or negedge rst_n) begin
+		if (!rst_n) begin
+			count <= 4'b0000;
+		end
+		else if (trigger) begin
+			if (ud) begin
+				if (count == 4'b1111)
+					count <= 4'b0000;
+				else
+					count <= count + 1;
+			end
+			else begin
+				if (count == 4'b0000)
+					count <= 4'b1111;
+				else
+					count <= count - 1'b1;
+			end
+		end
+	end
+endmodule

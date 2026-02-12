@@ -1,3 +1,3 @@
-# DigitalLock
+# ELEC473 Digital System Design for Digital Safe System
 
-FPGA DigitalLock Design for ELEC473 module
+..

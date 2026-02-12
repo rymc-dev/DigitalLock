@@ -1,0 +1,254 @@
+// =========================
+// Code Control Sub Module 
+// =========================
+/* 
+CodeControl 
+This module is the key module for code control, we get input from code 
+entry and utilize this internally based on the current mode we are in and 
+we expect to happen.
+
+Based on the diagram:
+- ModeDecoder generates enable_validate and enable_program based on current mode
+- CurrentCodeRegistry stores the programmed password (default 4'd2019)
+- CodeEqualityChecker compares current_code with stored password
+- UnlockLogic combines enable_validate, match signal, and keya trigger to unlock
+*/
+
+module CodeControl(
+	input wire [1:0] current_mode,
+	input wire [15:0] current_code,
+	input wire keya,
+	input wire rst_n,
+	input wire clk,
+	output wire unlock
+);
+	/*
+		code control is the module which controls the high level logic of the 
+		digital lock system
+		
+		inputs: 
+			- current_mode: 2-bit mode from ModeController
+			- current_code: 16-bit code from CodeEntry
+			- keya: key A button (used as trigger for validation)
+			- rst_n: active-low reset (SWX_N)
+			- clk: system clock
+			
+		outputs:
+			- unlock: signal to unlock the system
+	*/
+	
+	// Internal wires
+	wire mode_decoder_enable_validate;
+	wire mode_decoder_enable_program;
+	wire [15:0] stored_password;
+	wire code_equality_match;
+	wire and_gate_output;
+	
+	// AND gate: keya & enable_program -> shift signal for password registry
+	assign and_gate_output = keya & mode_decoder_enable_program;
+	
+	// Instantiate ModeDecoder
+	ModeDecoder mode_decoder_inst(
+		.mode(current_mode),
+		.enable_validate(mode_decoder_enable_validate),
+		.enable_program(mode_decoder_enable_program)
+	);
+	
+	// Instantiate CurrentCodeRegistry (stores programmed password)
+	CurrentCodeRegistry current_code_registry_inst(
+		.code(current_code),
+		.shift(and_gate_output),
+		.rst_n(rst_n),
+		.clk(clk),
+		.stored_code(stored_password)
+	);
+	
+	// Instantiate CodeEqualityChecker (16-bit comparator)
+	CodeEqualityChecker code_equality_checker_inst(
+		.a(current_code),
+		.b(stored_password),
+		.match(code_equality_match)
+	);
+	
+	// Instantiate UnlockLogic
+	UnlockLogic unlock_logic_inst(
+		.enable_validate(mode_decoder_enable_validate),
+		.match(code_equality_match),
+		.trigger_validate(keya),
+		.clk(clk),
+		.rst_n(rst_n),
+		.unlock(unlock)
+	);
+	
+endmodule
+
+module CurrentCodeRegistry(
+	input wire [15:0] code,
+	input wire shift, 
+	input wire rst_n,
+	input wire clk,
+	output reg [15:0] stored_code
+);
+	/* 
+		stores the current programmed password
+		default password is 4'd2019 (converted to binary: 0010_0000_0001_1001)
+		
+		inputs: 
+			- code: 16-bit code to be stored when shift is triggered
+			- shift: when high (and in programming mode), stores new code
+			- rst_n: active-low reset
+			- clk: system clock
+			
+		outputs: 	
+			- stored_code: the currently stored password
+	*/
+	
+	// Default password: 2019 in BCD would be 0x2019
+	// But if treating as decimal hex: 2019 = 0x07E3
+	// Based on comment "4'd2019", assuming BCD representation
+	localparam DEFAULT_PASSWORD = 16'h2019;
+	
+	always @(posedge clk or negedge rst_n) begin
+		if (!rst_n) begin
+			stored_code <= DEFAULT_PASSWORD;
+		end
+		else if (shift) begin
+			stored_code <= code;
+		end
+	end
+	
+endmodule
+
+module ModeDecoder(
+	input wire [1:0] mode, 
+	output reg enable_validate,
+	output reg enable_program
+);
+	/* 
+		utilizes the current mode to determine what sort 
+		of action we can perform
+		
+		Mode encoding:
+		- 2'b00: LOCKED - no validation or programming
+		- 2'b01: UNLOCKED - can validate (re-lock)
+		- 2'b10: UNLOCKED_PROGRAMMING - can program new password
+		
+		inputs: 
+			- mode: 2-bit mode signal
+			
+		outputs: 
+			- enable_validate: high when in UNLOCKED mode (can validate code)
+			- enable_program: high when in UNLOCKED_PROGRAMMING mode
+	*/ 
+	
+	localparam LOCKED = 2'b00;
+	localparam UNLOCKED = 2'b01;
+	localparam UNLOCKED_PROGRAMMING = 2'b10;
+	
+	always @(*) begin
+		// Default outputs
+		enable_validate = 1'b0;
+		enable_program = 1'b0;
+		
+		case(mode)
+			LOCKED: begin
+				enable_validate = 1'b1;  // Can attempt to unlock
+				enable_program = 1'b0;
+			end
+			
+			UNLOCKED: begin
+				enable_validate = 1'b1;  // Can re-lock
+				enable_program = 1'b0;
+			end
+			
+			UNLOCKED_PROGRAMMING: begin
+				enable_validate = 1'b0;
+				enable_program = 1'b1;   // Can program new password
+			end
+			
+			default: begin
+				enable_validate = 1'b0;
+				enable_program = 1'b0;
+			end
+		endcase
+	end
+	
+endmodule
+
+
+module CodeEqualityChecker(
+	input wire [15:0] a,
+	input wire [15:0] b,
+	output wire match
+);
+	/* 
+		compares both of the passwords to determine if they are 
+		a match or not.
+		
+		inputs: 
+			- a: first 16-bit code (current entered code)
+			- b: second 16-bit code (stored password)
+			
+		outputs: 
+			- match: high if a equals b, low otherwise
+	*/
+	
+	assign match = (a == b) ? 1'b1 : 1'b0;
+	
+endmodule
+
+
+module UnlockLogic(
+	input wire enable_validate,
+	input wire match,
+	input wire trigger_validate,
+	input wire clk,
+	input wire rst_n,
+	output reg unlock
+);
+	/* 
+		contains unlock logic for the digital system
+		
+		Logic:
+		- When enable_validate is high AND match is high AND trigger_validate is pressed,
+		  set unlock to high for one clock cycle (pulse)
+		
+		inputs: 
+			- enable_validate: from ModeDecoder (high in LOCKED/UNLOCKED modes)
+			- match: from CodeEqualityChecker (high if codes match)
+			- trigger_validate: keya button press
+			- clk: system clock
+			- rst_n: active-low reset
+			
+		outputs: 
+			- unlock: pulse signal when validation succeeds
+	*/ 
+	
+	reg trigger_validate_d;
+	wire trigger_rising_edge;
+	
+	// Detect rising edge of trigger_validate
+	always @(posedge clk or negedge rst_n) begin
+		if (!rst_n)
+			trigger_validate_d <= 1'b0;
+		else
+			trigger_validate_d <= trigger_validate;
+	end
+	
+	assign trigger_rising_edge = trigger_validate & ~trigger_validate_d;
+	
+	// Generate unlock pulse when conditions are met
+	always @(posedge clk or negedge rst_n) begin
+		if (!rst_n) begin
+			unlock <= 1'b0;
+		end
+		else begin
+			// Unlock if: validation enabled AND codes match AND trigger pressed
+			if (enable_validate && match && trigger_rising_edge)
+				unlock <= 1'b1;
+			else
+				unlock <= 1'b0;
+		end
+	end
+
+endmodule

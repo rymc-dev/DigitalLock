@@ -1,0 +1,366 @@
+|DigitalLockSystem
+swx_n => swx_n.IN3
+swm => swm.IN1
+keya => keya.IN2
+keyb => keyb.IN1
+keyc => keyc.IN1
+keyd => keyd.IN1
+clk => clk.IN3
+rledx <= ModeController:mode_controller_inst.rledx
+gledx <= ModeController:mode_controller_inst.gledx
+hexx_y[0] <= hexx_y[0].DB_MAX_OUTPUT_PORT_TYPE
+hexx_y[1] <= hexx_y[1].DB_MAX_OUTPUT_PORT_TYPE
+hexx_y[2] <= hexx_y[2].DB_MAX_OUTPUT_PORT_TYPE
+hexx_y[3] <= hexx_y[3].DB_MAX_OUTPUT_PORT_TYPE
+hexx_y[4] <= hexx_y[4].DB_MAX_OUTPUT_PORT_TYPE
+hexx_y[5] <= hexx_y[5].DB_MAX_OUTPUT_PORT_TYPE
+hexx_y[6] <= hexx_y[6].DB_MAX_OUTPUT_PORT_TYPE
+hexx_y[7] <= hexx_y[7].DB_MAX_OUTPUT_PORT_TYPE
+hexx_y[8] <= hexx_y[8].DB_MAX_OUTPUT_PORT_TYPE
+hexx_y[9] <= hexx_y[9].DB_MAX_OUTPUT_PORT_TYPE
+hexx_y[10] <= hexx_y[10].DB_MAX_OUTPUT_PORT_TYPE
+hexx_y[11] <= hexx_y[11].DB_MAX_OUTPUT_PORT_TYPE
+hexx_y[12] <= hexx_y[12].DB_MAX_OUTPUT_PORT_TYPE
+hexx_y[13] <= hexx_y[13].DB_MAX_OUTPUT_PORT_TYPE
+hexx_y[14] <= hexx_y[14].DB_MAX_OUTPUT_PORT_TYPE
+hexx_y[15] <= hexx_y[15].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DigitalLockSystem|ModeController:mode_controller_inst
+unlock => next_state.OUTPUTSELECT
+unlock => next_state.OUTPUTSELECT
+unlock => next_state.OUTPUTSELECT
+swx_n => state~3.DATAIN
+swm => next_state.OUTPUTSELECT
+swm => next_state.OUTPUTSELECT
+swm => next_state.OUTPUTSELECT
+swm => next_state.OUTPUTSELECT
+swm => next_state.OUTPUTSELECT
+keya => next_state.OUTPUTSELECT
+keya => next_state.OUTPUTSELECT
+keya => next_state.OUTPUTSELECT
+keya => next_state.OUTPUTSELECT
+keya => next_state.OUTPUTSELECT
+clk => state~1.DATAIN
+rledx <= rledx.DB_MAX_OUTPUT_PORT_TYPE
+gledx <= gledx.DB_MAX_OUTPUT_PORT_TYPE
+mode[0] <= rledx.DB_MAX_OUTPUT_PORT_TYPE
+mode[1] <= mode[1].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DigitalLockSystem|CodeEntry:code_entry_inst
+clk => clk.IN4
+rst_n => rst_n.IN3
+current_mode[0] => current_mode[0].IN1
+current_mode[1] => current_mode[1].IN1
+keyb_s => keyb_s.IN1
+keyc_s => keyc_s.IN1
+keyd_s => keyd_s.IN1
+code[0] <= CodeShiftRegister:code_shift_register_inst.code
+code[1] <= CodeShiftRegister:code_shift_register_inst.code
+code[2] <= CodeShiftRegister:code_shift_register_inst.code
+code[3] <= CodeShiftRegister:code_shift_register_inst.code
+code[4] <= CodeShiftRegister:code_shift_register_inst.code
+code[5] <= CodeShiftRegister:code_shift_register_inst.code
+code[6] <= CodeShiftRegister:code_shift_register_inst.code
+code[7] <= CodeShiftRegister:code_shift_register_inst.code
+code[8] <= CodeShiftRegister:code_shift_register_inst.code
+code[9] <= CodeShiftRegister:code_shift_register_inst.code
+code[10] <= CodeShiftRegister:code_shift_register_inst.code
+code[11] <= CodeShiftRegister:code_shift_register_inst.code
+code[12] <= CodeShiftRegister:code_shift_register_inst.code
+code[13] <= CodeShiftRegister:code_shift_register_inst.code
+code[14] <= CodeShiftRegister:code_shift_register_inst.code
+code[15] <= CodeShiftRegister:code_shift_register_inst.code
+
+
+|DigitalLockSystem|CodeEntry:code_entry_inst|ModeChangeDetector:mode_change_detector_inst
+clk => is_mode_change~reg0.CLK
+clk => previous_mode[0].CLK
+clk => previous_mode[1].CLK
+rst_n => is_mode_change~reg0.ACLR
+rst_n => previous_mode[0].ACLR
+rst_n => previous_mode[1].ACLR
+current_mode[0] => Equal0.IN1
+current_mode[0] => previous_mode[0].DATAIN
+current_mode[1] => Equal0.IN0
+current_mode[1] => previous_mode[1].DATAIN
+is_mode_change <= is_mode_change~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DigitalLockSystem|CodeEntry:code_entry_inst|DirectionLogic:direction_logic_inst
+up => Decoder0.IN0
+down => Decoder0.IN1
+dir <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
+valid <= valid.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DigitalLockSystem|CodeEntry:code_entry_inst|SinglePulse:single_pulse_inst
+clk => pulse~reg0.CLK
+clk => trigger_d.CLK
+rst_n => pulse~reg0.ACLR
+rst_n => trigger_d.ACLR
+trigger => pulse.IN1
+trigger => trigger_d.DATAIN
+pulse <= pulse~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DigitalLockSystem|CodeEntry:code_entry_inst|UpDownCounterWrap:up_down_counter_inst
+clk => count[0]~reg0.CLK
+clk => count[1]~reg0.CLK
+clk => count[2]~reg0.CLK
+clk => count[3]~reg0.CLK
+rst_n => count[0]~reg0.ACLR
+rst_n => count[1]~reg0.ACLR
+rst_n => count[2]~reg0.ACLR
+rst_n => count[3]~reg0.ACLR
+ud => count.OUTPUTSELECT
+ud => count.OUTPUTSELECT
+ud => count.OUTPUTSELECT
+ud => count.OUTPUTSELECT
+trigger => count[0]~reg0.ENA
+trigger => count[3]~reg0.ENA
+trigger => count[2]~reg0.ENA
+trigger => count[1]~reg0.ENA
+count[0] <= count[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+count[1] <= count[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+count[2] <= count[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+count[3] <= count[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DigitalLockSystem|CodeEntry:code_entry_inst|CodeShiftRegister:code_shift_register_inst
+digit[0] => Selector2.IN2
+digit[0] => Selector6.IN3
+digit[0] => Selector10.IN3
+digit[0] => Selector14.IN3
+digit[1] => Selector1.IN2
+digit[1] => Selector5.IN3
+digit[1] => Selector9.IN3
+digit[1] => Selector13.IN3
+digit[2] => Selector4.IN3
+digit[2] => Selector8.IN3
+digit[2] => Selector12.IN3
+digit[2] => Selector0.IN2
+digit[3] => Selector3.IN2
+digit[3] => Selector7.IN2
+digit[3] => Selector11.IN2
+digit[3] => code[15]~reg0.DATAIN
+rst_n => segment[0].ACLR
+rst_n => segment[1].ACLR
+rst_n => code[0]~reg0.ACLR
+rst_n => code[1]~reg0.ACLR
+rst_n => code[2]~reg0.ACLR
+rst_n => code[3]~reg0.ACLR
+rst_n => code[4]~reg0.ACLR
+rst_n => code[5]~reg0.ACLR
+rst_n => code[6]~reg0.ACLR
+rst_n => code[7]~reg0.ACLR
+rst_n => code[8]~reg0.ACLR
+rst_n => code[9]~reg0.ACLR
+rst_n => code[10]~reg0.ACLR
+rst_n => code[11]~reg0.ACLR
+rst_n => code[12]~reg0.ACLR
+rst_n => code[13]~reg0.ACLR
+rst_n => code[14]~reg0.ACLR
+rst_n => code[15]~reg0.ACLR
+shift => segment[0].ENA
+shift => segment[1].ENA
+clk => segment[0].CLK
+clk => segment[1].CLK
+clk => code[0]~reg0.CLK
+clk => code[1]~reg0.CLK
+clk => code[2]~reg0.CLK
+clk => code[3]~reg0.CLK
+clk => code[4]~reg0.CLK
+clk => code[5]~reg0.CLK
+clk => code[6]~reg0.CLK
+clk => code[7]~reg0.CLK
+clk => code[8]~reg0.CLK
+clk => code[9]~reg0.CLK
+clk => code[10]~reg0.CLK
+clk => code[11]~reg0.CLK
+clk => code[12]~reg0.CLK
+clk => code[13]~reg0.CLK
+clk => code[14]~reg0.CLK
+clk => code[15]~reg0.CLK
+code[0] <= code[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+code[1] <= code[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+code[2] <= code[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+code[3] <= code[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+code[4] <= code[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+code[5] <= code[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+code[6] <= code[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+code[7] <= code[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+code[8] <= code[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+code[9] <= code[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+code[10] <= code[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+code[11] <= code[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+code[12] <= code[12]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+code[13] <= code[13]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+code[14] <= code[14]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+code[15] <= code[15]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DigitalLockSystem|CodeControl:code_control_inst
+current_mode[0] => current_mode[0].IN1
+current_mode[1] => current_mode[1].IN1
+current_code[0] => current_code[0].IN2
+current_code[1] => current_code[1].IN2
+current_code[2] => current_code[2].IN2
+current_code[3] => current_code[3].IN2
+current_code[4] => current_code[4].IN2
+current_code[5] => current_code[5].IN2
+current_code[6] => current_code[6].IN2
+current_code[7] => current_code[7].IN2
+current_code[8] => current_code[8].IN2
+current_code[9] => current_code[9].IN2
+current_code[10] => current_code[10].IN2
+current_code[11] => current_code[11].IN2
+current_code[12] => current_code[12].IN2
+current_code[13] => current_code[13].IN2
+current_code[14] => current_code[14].IN2
+current_code[15] => current_code[15].IN2
+keya => keya.IN1
+rst_n => rst_n.IN2
+clk => clk.IN2
+unlock <= UnlockLogic:unlock_logic_inst.unlock
+
+
+|DigitalLockSystem|CodeControl:code_control_inst|ModeDecoder:mode_decoder_inst
+mode[0] => Decoder0.IN1
+mode[1] => Decoder0.IN0
+enable_validate <= enable_validate.DB_MAX_OUTPUT_PORT_TYPE
+enable_program <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DigitalLockSystem|CodeControl:code_control_inst|CurrentCodeRegistry:current_code_registry_inst
+code[0] => stored_code[0]~reg0.DATAIN
+code[1] => stored_code[1]~reg0.DATAIN
+code[2] => stored_code[2]~reg0.DATAIN
+code[3] => stored_code[3]~reg0.DATAIN
+code[4] => stored_code[4]~reg0.DATAIN
+code[5] => stored_code[5]~reg0.DATAIN
+code[6] => stored_code[6]~reg0.DATAIN
+code[7] => stored_code[7]~reg0.DATAIN
+code[8] => stored_code[8]~reg0.DATAIN
+code[9] => stored_code[9]~reg0.DATAIN
+code[10] => stored_code[10]~reg0.DATAIN
+code[11] => stored_code[11]~reg0.DATAIN
+code[12] => stored_code[12]~reg0.DATAIN
+code[13] => stored_code[13]~reg0.DATAIN
+code[14] => stored_code[14]~reg0.DATAIN
+code[15] => stored_code[15]~reg0.DATAIN
+shift => stored_code[0]~reg0.ENA
+shift => stored_code[15]~reg0.ENA
+shift => stored_code[14]~reg0.ENA
+shift => stored_code[13]~reg0.ENA
+shift => stored_code[12]~reg0.ENA
+shift => stored_code[11]~reg0.ENA
+shift => stored_code[10]~reg0.ENA
+shift => stored_code[9]~reg0.ENA
+shift => stored_code[8]~reg0.ENA
+shift => stored_code[7]~reg0.ENA
+shift => stored_code[6]~reg0.ENA
+shift => stored_code[5]~reg0.ENA
+shift => stored_code[4]~reg0.ENA
+shift => stored_code[3]~reg0.ENA
+shift => stored_code[2]~reg0.ENA
+shift => stored_code[1]~reg0.ENA
+rst_n => stored_code[0]~reg0.PRESET
+rst_n => stored_code[1]~reg0.ACLR
+rst_n => stored_code[2]~reg0.ACLR
+rst_n => stored_code[3]~reg0.PRESET
+rst_n => stored_code[4]~reg0.PRESET
+rst_n => stored_code[5]~reg0.ACLR
+rst_n => stored_code[6]~reg0.ACLR
+rst_n => stored_code[7]~reg0.ACLR
+rst_n => stored_code[8]~reg0.ACLR
+rst_n => stored_code[9]~reg0.ACLR
+rst_n => stored_code[10]~reg0.ACLR
+rst_n => stored_code[11]~reg0.ACLR
+rst_n => stored_code[12]~reg0.ACLR
+rst_n => stored_code[13]~reg0.PRESET
+rst_n => stored_code[14]~reg0.ACLR
+rst_n => stored_code[15]~reg0.ACLR
+clk => stored_code[0]~reg0.CLK
+clk => stored_code[1]~reg0.CLK
+clk => stored_code[2]~reg0.CLK
+clk => stored_code[3]~reg0.CLK
+clk => stored_code[4]~reg0.CLK
+clk => stored_code[5]~reg0.CLK
+clk => stored_code[6]~reg0.CLK
+clk => stored_code[7]~reg0.CLK
+clk => stored_code[8]~reg0.CLK
+clk => stored_code[9]~reg0.CLK
+clk => stored_code[10]~reg0.CLK
+clk => stored_code[11]~reg0.CLK
+clk => stored_code[12]~reg0.CLK
+clk => stored_code[13]~reg0.CLK
+clk => stored_code[14]~reg0.CLK
+clk => stored_code[15]~reg0.CLK
+stored_code[0] <= stored_code[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+stored_code[1] <= stored_code[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+stored_code[2] <= stored_code[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+stored_code[3] <= stored_code[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+stored_code[4] <= stored_code[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+stored_code[5] <= stored_code[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+stored_code[6] <= stored_code[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+stored_code[7] <= stored_code[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+stored_code[8] <= stored_code[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+stored_code[9] <= stored_code[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+stored_code[10] <= stored_code[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+stored_code[11] <= stored_code[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+stored_code[12] <= stored_code[12]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+stored_code[13] <= stored_code[13]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+stored_code[14] <= stored_code[14]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+stored_code[15] <= stored_code[15]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DigitalLockSystem|CodeControl:code_control_inst|CodeEqualityChecker:code_equality_checker_inst
+a[0] => Equal0.IN15
+a[1] => Equal0.IN14
+a[2] => Equal0.IN13
+a[3] => Equal0.IN12
+a[4] => Equal0.IN11
+a[5] => Equal0.IN10
+a[6] => Equal0.IN9
+a[7] => Equal0.IN8
+a[8] => Equal0.IN7
+a[9] => Equal0.IN6
+a[10] => Equal0.IN5
+a[11] => Equal0.IN4
+a[12] => Equal0.IN3
+a[13] => Equal0.IN2
+a[14] => Equal0.IN1
+a[15] => Equal0.IN0
+b[0] => Equal0.IN31
+b[1] => Equal0.IN30
+b[2] => Equal0.IN29
+b[3] => Equal0.IN28
+b[4] => Equal0.IN27
+b[5] => Equal0.IN26
+b[6] => Equal0.IN25
+b[7] => Equal0.IN24
+b[8] => Equal0.IN23
+b[9] => Equal0.IN22
+b[10] => Equal0.IN21
+b[11] => Equal0.IN20
+b[12] => Equal0.IN19
+b[13] => Equal0.IN18
+b[14] => Equal0.IN17
+b[15] => Equal0.IN16
+match <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DigitalLockSystem|CodeControl:code_control_inst|UnlockLogic:unlock_logic_inst
+enable_validate => always1.IN0
+match => always1.IN1
+trigger_validate => trigger_rising_edge.IN1
+trigger_validate => trigger_validate_d.DATAIN
+clk => unlock~reg0.CLK
+clk => trigger_validate_d.CLK
+rst_n => unlock~reg0.ACLR
+rst_n => trigger_validate_d.ACLR
+unlock <= unlock~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+

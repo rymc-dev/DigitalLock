@@ -1,0 +1,139 @@
+/*
+    Tests for a one shot pulse of this module
+*/
+
+`timescale 1ns/1ps
+
+module SinglePulse_tb;
+
+    // ======================
+    // Testbench Signals
+    // ======================
+
+    reg clk;
+    reg rst_n;
+    reg trigger;
+    wire pulse;
+
+    // ======================
+    // DUT
+    // ======================
+    SinglePulse DUT (
+        .clk(clk),
+        .rst_n(rst_n),
+        .trigger(trigger),
+        .pulse(pulse)
+    );
+
+    // ======================
+    // Clock Generator
+    // ======================
+    initial begin 
+        clk = 0;
+        forever begin
+            #10 clk = ~clk;   // 20ns period
+        end
+    end
+
+    // ======================
+    // Monitor (debug helper)
+    // ======================
+    always @(posedge clk) begin
+        $display("%0t rst_n=%b trigger=%b pulse=%b",
+                 $time, rst_n, trigger, pulse);
+    end
+
+    // ======================
+    // Test Stimulus
+    // ======================
+    initial begin
+
+        // ------------------
+        // Initial Conditions
+        // ------------------
+        rst_n   = 0;
+        trigger = 0;
+
+        // Hold reset
+        repeat (3) @(posedge clk);
+        rst_n = 1;
+        @(posedge clk);
+
+        // ------------------
+        // TEST 1: No trigger → no pulse
+        // ------------------
+        repeat (3) @(posedge clk);
+        if (pulse !== 0)
+            $fatal("FAIL: Pulse active without trigger");
+
+        // ------------------
+        // TEST 2: Single rising edge trigger → 1 pulse
+        // ------------------
+        trigger = 1;
+        @(posedge clk);
+        trigger = 0;
+
+        // pulse should be 1 for ONE cycle
+        @(posedge clk);
+        if (pulse !== 1)
+            $fatal("FAIL: Expected pulse = 1 on rising trigger");
+
+        @(posedge clk);
+        if (pulse !== 0)
+            $fatal("FAIL: Pulse lasted more than one cycle");
+
+        // ------------------
+        // TEST 3: Hold trigger high → only one pulse
+        // ------------------
+        trigger = 1;
+        @(posedge clk);   // should create pulse
+        @(posedge clk);   // should NOT create pulse
+        @(posedge clk);
+
+        if (pulse !== 0)
+            $fatal("FAIL: Pulse retriggered while trigger held high");
+
+        trigger = 0;
+        @(posedge clk);
+
+        // ------------------
+        // TEST 4: Multiple trigger presses → multiple pulses
+        // ------------------
+        repeat (3) begin
+            trigger = 1;
+            @(posedge clk);
+            trigger = 0;
+
+            @(posedge clk);
+            if (pulse !== 1)
+                $fatal("FAIL: Missing pulse on trigger press");
+
+            @(posedge clk);
+        end
+
+        // ------------------
+        // TEST 5: Reset during operation
+        // ------------------
+        trigger = 1;
+        @(posedge clk);
+
+        rst_n = 0;   // force reset
+        @(posedge clk);
+
+        if (pulse !== 0)
+            $fatal("FAIL: Pulse not cleared by reset");
+
+        rst_n = 1;
+        trigger = 0;
+        @(posedge clk);
+
+        // ------------------
+        // Done
+        // ------------------
+        $display("All SinglePulse tests passed.");
+        #50;
+        $finish;
+
+    end
+
+endmodule

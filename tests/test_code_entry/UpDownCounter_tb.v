@@ -1,0 +1,111 @@
+`timescale 1ns/1ps
+
+module UpDownCounterWrap_tb;
+    // ======================
+    // Testbench Signals
+    // ======================
+
+    reg clk;
+    reg rst_n;
+    reg ud;
+    reg trigger;
+    wire [3:0] count;
+
+    // ========================
+    // Instantiate DUT
+    // ========================
+    UpDownCounterWrap DUT(
+        .clk(clk),
+        .rst_n(rst_n),
+        .ud(ud),
+        .trigger(trigger),
+        .count(count)
+    );
+
+    // ==================
+    // Clock Generator
+    // ==================
+    initial begin
+        clk = 0;
+        forever begin
+            #10 clk = ~clk; // 20ns period
+        end
+    end
+
+    // Simple monitor
+    always @(posedge clk) begin
+        $display("%0t clk posedge : rst_n=%b ud=%b trigger=%b count=%b (%0d)",
+                 $time, rst_n, ud, trigger, count, count);
+    end
+
+    // ================
+    // Test stimulus
+    // ================
+    initial begin
+        // initial input values
+        rst_n   = 0;
+        ud      = 0;
+        trigger = 0;
+
+        // Hold reset for a few cycles
+        repeat (3) @(posedge clk);
+        rst_n = 1;
+        @(posedge clk);
+
+        // --- 0) Sanity: counter should be 0 after reset
+        if (count !== 4'd0) $fatal("After reset expected count==0 but got %0d", count);
+
+        // --- 1) Toggle ud WITHOUT trigger: count must not change (stay 0)
+        ud = 1; trigger = 0;
+        @(posedge clk); // allow one cycle with ud=1 but trigger=0
+        ud = 0;
+        @(posedge clk);
+        if (count !== 4'd0) $fatal("Count changed without trigger: expected 0 got %0d", count);
+
+        // --- 2) Increment with trigger -> expect count = 1
+        ud = 1;        // request up
+        trigger = 1;   // assert trigger during next posedge
+        @(posedge clk); // DUT should sample trigger and ud here
+        trigger = 0;    // deassert
+        @(posedge clk); // allow state to settle
+        if (count !== 4'd1) $fatal("Increment failed: expected 1 got %0d", count);
+
+        // --- 3) Decrement with trigger -> expect count = 0
+        ud = 0; trigger = 1;
+        @(posedge clk);
+        trigger = 0;
+        @(posedge clk);
+        if (count !== 4'd0) $fatal("Decrement failed: expected 0 got %0d", count);
+
+        // --- 4) Decrement at 0 should wrap to 31 (11111)
+        ud = 0; trigger = 1;
+        @(posedge clk);
+        trigger = 0;
+        @(posedge clk);
+        if (count !== 4'd9) $fatal("Wrap-around (decrement) failed: expected 9 got %0d", count);
+
+        // --- 5) Increment at 31 should wrap to 0
+        ud = 1; trigger = 1;
+        @(posedge clk);
+        trigger = 0;
+        @(posedge clk);
+        if (count !== 4'd0) $fatal("Wrap-around (increment) failed: expected 0 got %0d", count);
+		  
+		  // --- 5) Test Reset to 0 should reset to 0
+		  ud =1; trigger = 1;
+		  @(posedge clk);
+		  ud = 1; trigger = 1;
+		  @(posedge clk);
+		  ud = 1; trigger = 1;
+		  @(posedge clk);
+		  ud = 1; trigger = 0;
+		  @(posedge clk);
+		  rst_n = 0; 
+		  @(posedge clk);
+		  if (count != 4'd0) $fatal("Reset did not work as expected, expected 0, got %0d", count);
+
+        $display("All tests passed.");
+        #100 $finish;
+    end
+
+endmodule

@@ -1,0 +1,30 @@
+module CodeShiftRegister(
+	input [3:0] digit,
+	input rst,
+	input shift,
+	input clk,
+	output reg [15:0] code
+);
+	/* 
+		this sequential logic block stores the current register segment
+		and shifts the right 4 bits for each shift
+		
+		Structure: code = [digit3][digit2][digit1][digit0]
+		- Initially all zeros
+		- Each shift moves digits left and inserts new digit at position 0
+	*/ 
+	
+	always @(posedge clk or negedge rst) begin
+		if (!rst) begin
+			code <= 16'b0;
+		end
+		else if (shift) begin
+			// Shift left by 4 bits and insert new digit at bottom
+			code <= {code[11:0], digit};
+		end
+		else begin
+			// Update the current digit in place (position 0)
+			code[3:0] <= digit;
+		end
+	end
+endmodule

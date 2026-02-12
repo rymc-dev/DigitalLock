@@ -1,0 +1,147 @@
+`timescale 1ns/1ps
+
+module CodeShiftRegister_tb;
+
+    // ======================
+    // Testbench Signals
+    // ======================
+    reg [3:0] digit;
+    reg rst;
+    reg shift;
+    reg clk;
+    wire [15:0] code;
+
+    // ======================
+    // DUT
+    // ======================
+    CodeShiftRegister DUT (
+        .digit(digit),
+        .rst(rst),
+        .shift(shift),
+        .clk(clk),
+        .code(code)
+    );
+
+    // ======================
+    // Clock Generator
+    // ======================
+    initial begin
+        clk = 0;
+        forever #10 clk = ~clk; // 20ns period
+    end
+
+    // ======================
+    // Monitor
+    // ======================
+    always @(posedge clk) begin
+        $display("%0t rst=%b shift=%b digit=%h code=%h",
+                 $time, rst, shift, digit, code);
+    end
+
+    // ======================
+    // Test Stimulus
+    // ======================
+    initial begin
+
+        // ------------------
+        // Initial State
+        // ------------------
+        rst   = 0;
+        shift = 0;
+        digit = 4'h0;
+
+        // Hold reset
+        repeat (2) @(posedge clk);
+        rst = 1;
+        @(posedge clk);
+
+        // ------------------
+        // TEST 1: Reset clears register
+        // ------------------
+        if (code !== 16'h0000)
+            $fatal("FAIL: Reset did not clear code");
+
+        // ------------------
+        // TEST 2: Update digit without shift
+        // ------------------
+        digit = 4'hA;
+        shift = 0;
+        @(posedge clk);
+
+        if (code[3:0] !== 4'hA)
+            $fatal("FAIL: Digit did not update without shift");
+
+        // ------------------
+        // TEST 3: First shift
+        // Expect: 000A -> 00A1
+        // ------------------
+        digit = 4'h1;
+        shift = 1;
+        @(posedge clk);
+
+        if (code !== 16'h00A1)
+            $fatal("FAIL: First shift incorrect, got %h", code);
+
+        // ------------------
+        // TEST 4: Second shift
+        // Expect: 00A1 -> 0A12
+        // ------------------
+        digit = 4'h2;
+        @(posedge clk);
+
+        if (code !== 16'h0A12)
+            $fatal("FAIL: Second shift incorrect, got %h", code);
+
+        // ------------------
+        // TEST 5: Third shift
+        // Expect: 0A12 -> A123
+        // ------------------
+        digit = 4'h3;
+        @(posedge clk);
+
+        if (code !== 16'hA123)
+            $fatal("FAIL: Third shift incorrect, got %h", code);
+
+        // ------------------
+        // TEST 6: Fourth shift
+        // Expect: A123 -> 1234
+        // ------------------
+        digit = 4'h4;
+        @(posedge clk);
+
+        if (code !== 16'h1234)
+            $fatal("FAIL: Fourth shift incorrect, got %h", code);
+
+        // ------------------
+        // TEST 7: Stop shifting, update last digit only
+        // Expect: 1234 -> 123F
+        // ------------------
+        shift = 0;
+        digit = 4'hF;
+        @(posedge clk);
+
+        if (code !== 16'h123F)
+            $fatal("FAIL: Digit update without shift failed, got %h", code);
+
+        // ------------------
+        // TEST 8: Reset during operation
+        // ------------------
+        rst = 0;
+        @(posedge clk);
+
+        if (code !== 16'h0000)
+            $fatal("FAIL: Reset during operation failed");
+
+        rst = 1;
+        @(posedge clk);
+
+        // ------------------
+        // Done
+        // ------------------
+        $display("All CodeShiftRegister tests passed.");
+        #50;
+        $finish;
+
+    end
+
+endmodule
