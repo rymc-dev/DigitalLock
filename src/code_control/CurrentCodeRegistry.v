@@ -1,56 +1,61 @@
 // =========================
-// CurrentCodeRegistry - FIXED VERSION
+// CurrentCodeRegistry Module
 // =========================
 module CurrentCodeRegistry(
-    input wire [15:0] code,
-    input wire shift, 
-    input wire rst_n,
-    input wire clk,
-    output reg [15:0] stored_code
+    input wire [15:0] code,          // New password to store (from CodeEntry)
+    input wire shift,                // Store trigger (KEYA in programming mode)
+    input wire rst_n,                // Active-low reset
+    input wire clk,                  // System clock
+    output reg [15:0] stored_code    // Current stored password
 );
     /* 
-        stores the current programmed password
-        default password is 4'd2019 (converted to binary: 0010_0000_0001_1001)
+        Stores the system password with edge-detected write control.
         
-        inputs: 
-            - code: 16-bit code to be stored when shift is triggered
-            - shift: when high (and in programming mode), stores new code
-            - rst_n: active-low reset
-            - clk: system clock
-            
-        outputs:     
-            - stored_code: the currently stored password
+        Default Password: 0x2019 (BCD representation: 2-0-1-9)
+        
+        Operation:
+        - On reset: Restore default password
+        - On shift rising edge (in programming mode): Store new password
+        - Otherwise: Maintain current password
+        
+        Edge detection prevents multiple writes per button press.
     */
     
-    // Default password: 2019 in BCD would be 0x2019
-    // But if treating as decimal hex: 2019 = 0x07E3
-    // Based on comment "4'd2019", assuming BCD representation
-    localparam DEFAULT_PASSWORD = 16'h2019;
+    // ---- Default Password Definition ----
+    localparam DEFAULT_PASSWORD = 16'h2019;  // Student ID: 2019
     
-    // Edge detection for shift signal
-    reg shift_d;
-    wire shift_posedge;
+    // ---- Edge Detection Registers ----
+    reg shift_delayed;               // Previous state of shift signal
+    wire shift_rising_edge;          // Rising edge detection signal
     
-	 initial begin 
-		stored_code = DEFAULT_PASSWORD;
-	 end
-	 
-    always @(posedge clk or negedge rst_n) begin
-        if (!rst_n)
-            shift_d <= 1'b0;
-        else
-            shift_d <= shift;
+    // Initialize stored password to default (for simulation)
+    initial begin 
+        stored_code = DEFAULT_PASSWORD;
     end
     
-    assign shift_posedge = shift & ~shift_d;
+    // Detect rising edge of shift signal
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n)
+            shift_delayed <= 1'b0;
+        else
+            shift_delayed <= shift;  // Store previous state
+    end
     
+    // Rising edge occurs when current is high and previous was low
+    assign shift_rising_edge = shift & ~shift_delayed;
+    
+    // ---- Password Storage Logic ----
+    // Store password on reset or rising edge of shift
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
+            // Reset: restore default password
             stored_code <= DEFAULT_PASSWORD;
         end
-        else if (shift_posedge) begin  // FIXED: Only store on rising edge
+        else if (shift_rising_edge) begin
+            // Programming: store new password on rising edge only
             stored_code <= code;
         end
+        // Otherwise: maintain current password
     end
     
 endmodule
