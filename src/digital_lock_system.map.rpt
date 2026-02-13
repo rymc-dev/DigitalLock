@@ -1,5 +1,5 @@
 Analysis & Elaboration report for digital_lock_system
-Fri Feb 13 12:28:49 2026
+Fri Feb 13 14:08:22 2026
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
 
 
@@ -36,7 +36,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                                        ;
 +------------------------------------+--------------------------------------------------+
-; Analysis & Elaboration Status      ; Successful - Fri Feb 13 12:28:49 2026            ;
+; Analysis & Elaboration Status      ; Successful - Fri Feb 13 14:08:22 2026            ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version ;
 ; Revision Name                      ; digital_lock_system                              ;
 ; Top-level Entity Name              ; DigitalLockSystem                                ;
@@ -161,7 +161,7 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Elaboration
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
-    Info: Processing started: Fri Feb 13 12:28:47 2026
+    Info: Processing started: Fri Feb 13 14:08:19 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off digital_lock_system -c digital_lock_system --analysis_and_elaboration
 Info (11104): Parallel Compilation has detected 20 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 14 of the 14 physical processors detected instead.
 Info (12021): Found 1 design units, including 1 entities, in source file digitallocksystem.v
@@ -206,9 +206,9 @@ Info (12128): Elaborating entity "CurrentCodeRegistry" for hierarchy "CodeContro
 Info (12128): Elaborating entity "CodeEqualityChecker" for hierarchy "CodeControl:code_control_inst|CodeEqualityChecker:code_equality_checker_inst"
 Info (12128): Elaborating entity "UnlockLogic" for hierarchy "CodeControl:code_control_inst|UnlockLogic:unlock_logic_inst"
 Info: Quartus II 64-Bit Analysis & Elaboration was successful. 0 errors, 2 warnings
-    Info: Peak virtual memory: 4600 megabytes
-    Info: Processing ended: Fri Feb 13 12:28:49 2026
-    Info: Elapsed time: 00:00:02
-    Info: Total CPU time (on all processors): 00:00:00
+    Info: Peak virtual memory: 4599 megabytes
+    Info: Processing ended: Fri Feb 13 14:08:22 2026
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:01
 
 
