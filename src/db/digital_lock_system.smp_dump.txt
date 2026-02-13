@@ -1,5 +1,5 @@
 
-State Machine - |digital_lock_system|ModeController:u_mode_controller|state
+State Machine - |DigitalLockSystem|ModeController:mode_controller_inst|state
 Name state.LOCKED state.UNLOCKED_PROGRAMMING state.UNLOCKED 
 state.LOCKED 0 0 0 
 state.UNLOCKED 1 0 1 

@@ -38,6 +38,8 @@ module CodeEntry(
     wire [3:0] counter_digit;
     wire mode_change_reset;
     wire rst_code_shift_register_inst_n = rst_n & !mode_change_reset;
+	 
+	 wire counter_clear = keyd_s | mode_change_reset;
 
     ModeChangeDetector mode_change_detector_inst(
         .clk(clk),
@@ -60,6 +62,7 @@ module CodeEntry(
     UpDownCounterWrap up_down_counter_inst(
         .clk(clk),
         .rst_n(rst_n),
+		  .clear(counter_clear),
         .ud(direction_logic_dir),
         .trigger(single_pulse_out),
         .count(counter_digit)

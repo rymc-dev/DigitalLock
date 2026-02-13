@@ -1,6 +1,6 @@
 library verilog;
 use verilog.vl_types.all;
-entity digital_lock_system is
+entity DigitalLockSystem is
     port(
         swx_n           : in     vl_logic;
         swm             : in     vl_logic;
@@ -13,4 +13,4 @@ entity digital_lock_system is
         gledx           : out    vl_logic;
         hexx_y          : out    vl_logic_vector(15 downto 0)
     );
-end digital_lock_system;
+end DigitalLockSystem;

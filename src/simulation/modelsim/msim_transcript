@@ -10,89 +10,88 @@
 # ** Warning: Copied C:\altera\13.0sp1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
 #          Updated modelsim.ini.
 # 
-# vlog -vlog01compat -work work +incdir+C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry {C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry/UpDownCounter.v}
+# vlog -vlog01compat -work work +incdir+C:/Users/ryanm/OneDrive/Desktop/DigitalLock/src {C:/Users/ryanm/OneDrive/Desktop/DigitalLock/src/DigitalLockSystem.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module DigitalLockSystem
+# 
+# Top level modules:
+# 	DigitalLockSystem
+# vlog -vlog01compat -work work +incdir+C:/Users/ryanm/OneDrive/Desktop/DigitalLock/src/code_entry {C:/Users/ryanm/OneDrive/Desktop/DigitalLock/src/code_entry/UpDownCounter.v}
 # Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 # -- Compiling module UpDownCounterWrap
 # 
 # Top level modules:
 # 	UpDownCounterWrap
-# vlog -vlog01compat -work work +incdir+C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry {C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry/SinglePulse.v}
+# vlog -vlog01compat -work work +incdir+C:/Users/ryanm/OneDrive/Desktop/DigitalLock/src/code_entry {C:/Users/ryanm/OneDrive/Desktop/DigitalLock/src/code_entry/SinglePulse.v}
 # Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 # -- Compiling module SinglePulse
 # 
 # Top level modules:
 # 	SinglePulse
-# vlog -vlog01compat -work work +incdir+C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry {C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry/ModeChangeDetector.v}
+# vlog -vlog01compat -work work +incdir+C:/Users/ryanm/OneDrive/Desktop/DigitalLock/src/code_entry {C:/Users/ryanm/OneDrive/Desktop/DigitalLock/src/code_entry/ModeChangeDetector.v}
 # Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 # -- Compiling module ModeChangeDetector
 # 
 # Top level modules:
 # 	ModeChangeDetector
-# vlog -vlog01compat -work work +incdir+C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry {C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry/DirectionLogic.v}
+# vlog -vlog01compat -work work +incdir+C:/Users/ryanm/OneDrive/Desktop/DigitalLock/src/code_entry {C:/Users/ryanm/OneDrive/Desktop/DigitalLock/src/code_entry/DirectionLogic.v}
 # Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 # -- Compiling module DirectionLogic
 # 
 # Top level modules:
 # 	DirectionLogic
-# vlog -vlog01compat -work work +incdir+C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry {C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry/CodeShiftRegister.v}
+# vlog -vlog01compat -work work +incdir+C:/Users/ryanm/OneDrive/Desktop/DigitalLock/src/code_entry {C:/Users/ryanm/OneDrive/Desktop/DigitalLock/src/code_entry/CodeShiftRegister.v}
 # Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 # -- Compiling module CodeShiftRegister
 # 
 # Top level modules:
 # 	CodeShiftRegister
-# vlog -vlog01compat -work work +incdir+C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src {C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/digital_lock_system.v}
-# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
-# -- Compiling module digital_lock_system
-# 
-# Top level modules:
-# 	digital_lock_system
-# vlog -vlog01compat -work work +incdir+C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/mode_controller {C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/mode_controller/ModeController.v}
+# vlog -vlog01compat -work work +incdir+C:/Users/ryanm/OneDrive/Desktop/DigitalLock/src/mode_controller {C:/Users/ryanm/OneDrive/Desktop/DigitalLock/src/mode_controller/ModeController.v}
 # Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 # -- Compiling module ModeController
 # 
 # Top level modules:
 # 	ModeController
-# vlog -vlog01compat -work work +incdir+C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry {C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_entry/CodeEntry.v}
+# vlog -vlog01compat -work work +incdir+C:/Users/ryanm/OneDrive/Desktop/DigitalLock/src/code_entry {C:/Users/ryanm/OneDrive/Desktop/DigitalLock/src/code_entry/CodeEntry.v}
 # Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 # -- Compiling module CodeEntry
 # 
 # Top level modules:
 # 	CodeEntry
-# vlog -vlog01compat -work work +incdir+C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control {C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control/CodeControl.v}
+# vlog -vlog01compat -work work +incdir+C:/Users/ryanm/OneDrive/Desktop/DigitalLock/src/code_control {C:/Users/ryanm/OneDrive/Desktop/DigitalLock/src/code_control/CodeControl.v}
 # Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 # -- Compiling module CodeControl
 # 
 # Top level modules:
 # 	CodeControl
-# vlog -vlog01compat -work work +incdir+C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control {C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control/CurrentCodeRegistry.v}
+# vlog -vlog01compat -work work +incdir+C:/Users/ryanm/OneDrive/Desktop/DigitalLock/src/code_control {C:/Users/ryanm/OneDrive/Desktop/DigitalLock/src/code_control/CurrentCodeRegistry.v}
 # Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 # -- Compiling module CurrentCodeRegistry
 # 
 # Top level modules:
 # 	CurrentCodeRegistry
-# vlog -vlog01compat -work work +incdir+C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control {C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control/ModeDecoder.v}
+# vlog -vlog01compat -work work +incdir+C:/Users/ryanm/OneDrive/Desktop/DigitalLock/src/code_control {C:/Users/ryanm/OneDrive/Desktop/DigitalLock/src/code_control/ModeDecoder.v}
 # Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 # -- Compiling module ModeDecoder
 # 
 # Top level modules:
 # 	ModeDecoder
-# vlog -vlog01compat -work work +incdir+C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control {C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control/CodeEqualityChecker.v}
+# vlog -vlog01compat -work work +incdir+C:/Users/ryanm/OneDrive/Desktop/DigitalLock/src/code_control {C:/Users/ryanm/OneDrive/Desktop/DigitalLock/src/code_control/CodeEqualityChecker.v}
 # Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 # -- Compiling module CodeEqualityChecker
 # 
 # Top level modules:
 # 	CodeEqualityChecker
-# vlog -vlog01compat -work work +incdir+C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control {C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/src/code_control/UnlockLogic.v}
+# vlog -vlog01compat -work work +incdir+C:/Users/ryanm/OneDrive/Desktop/DigitalLock/src/code_control {C:/Users/ryanm/OneDrive/Desktop/DigitalLock/src/code_control/UnlockLogic.v}
 # Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 # -- Compiling module UnlockLogic
 # 
 # Top level modules:
 # 	UnlockLogic
 # 
-vlib work
-# ** Warning: (vlib-34) Library already exists at "work".
-# 
-vlog C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/tests/DigitalSystem_tb.v
+run 500nsvlib work
+# No Design Loaded!
+vlog C:/Users/ryanm/OneDrive/Desktop/DigitalLock/tests/DigitalLockSystem_tb.v
 # Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 # -- Compiling module DigitalLockSystem_tb
 # 
@@ -101,7 +100,7 @@ vlog C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/tests/DigitalSystem_tb
 vsim DigitalLockSystem_tb 
 # vsim DigitalLockSystem_tb 
 # Loading work.DigitalLockSystem_tb
-# Loading work.digital_lock_system
+# Loading work.DigitalLockSystem
 # Loading work.ModeController
 # Loading work.CodeEntry
 # Loading work.ModeChangeDetector
@@ -117,93 +116,89 @@ vsim DigitalLockSystem_tb
 add wave -position insertpoint  \
 sim:/DigitalLockSystem_tb/swx_n \
 sim:/DigitalLockSystem_tb/swm \
-sim:/DigitalLockSystem_tb/keya \
-sim:/DigitalLockSystem_tb/keyb \
-sim:/DigitalLockSystem_tb/keyc \
-sim:/DigitalLockSystem_tb/keyd \
-sim:/DigitalLockSystem_tb/clk \
 sim:/DigitalLockSystem_tb/rledx \
-sim:/DigitalLockSystem_tb/gledx \
-sim:/DigitalLockSystem_tb/hexx_y \
 sim:/DigitalLockSystem_tb/prev_rledx \
-sim:/DigitalLockSystem_tb/prev_gledx
+sim:/DigitalLockSystem_tb/prev_gledx \
+sim:/DigitalLockSystem_tb/keyd \
+sim:/DigitalLockSystem_tb/keyc \
+sim:/DigitalLockSystem_tb/keyb \
+sim:/DigitalLockSystem_tb/keya \
+sim:/DigitalLockSystem_tb/hexx_y \
+sim:/DigitalLockSystem_tb/gledx \
+sim:/DigitalLockSystem_tb/clk
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+# 
+#           File in use by: ryanm  Hostname: RYLAPTOP  ProcessID: 29416
+# 
+#           Attempting to use alternate WLF file "./wlft1nfwjd".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+# 
+#           Using alternate file: ./wlft1nfwjd
+# 
+
 run -all
 # ========================================
 # Digital Lock System Testbench Starting
+# ACTIVE-LOW Button Configuration (DE2 Board)
+# Default Password: 2019
 # ========================================
+# Time=0: hexx_y CHANGED to 0000 (hex) =     0 (decimal)
+# Time=10000: LED CHANGE - RLED=1 GLED=0
 # 
-# --- Test 1: System Reset ---
-# Time=10000: LED change - RLED=1 GLED=0
-# Time=390000: RLED=1 GLED=0 HEX=0000
+# --- Manual Entry Test ---
+# Time=450000: hexx_y CHANGED to 1000 (hex) =  4096 (decimal)
+# After 1st UP: hexx_y=1000
+# Time=1050000: hexx_y CHANGED to 2000 (hex) =  8192 (decimal)
+# After 2nd UP: hexx_y=2000
+# After 1st ENTRY: hexx_y=2000
+# After 2nd ENTRY: hexx_y=2000
+# Time=2850000: hexx_y CHANGED to 2010 (hex) =  8208 (decimal)
+# After 3rd UP: hexx_y=2010
+# After 3rd ENTRY: hexx_y=2010
+# Time=4050000: hexx_y CHANGED to 2019 (hex) =  8217 (decimal)
+# After DOWN: hexx_y=2019
 # 
-# --- Test 2: Lock System (KEYA) ---
-# Time=750000: RLED=1 GLED=0 HEX=0000
-# PASS: Red LED is ON (system locked)
+# --- Validating Code ---
+# Time=4650000: LED CHANGE - RLED=0 GLED=1
+# After KEYA: hexx_y=2019 RLED=0 GLED=1
 # 
-# --- Test 3: Test Up Button (KEYB) ---
-# Time=1010000: RLED=1 GLED=0 HEX=1000
-# Time=1270000: RLED=1 GLED=0 HEX=2000
-# Time=1530000: RLED=1 GLED=0 HEX=3000
+# --- Programming Mode Test ---
+# Time=5230000: LED CHANGE - RLED=1 GLED=1
+# Programming mode: hexx_y=2019 RLED=1 GLED=1
+# Time=5430000: LED CHANGE - RLED=1 GLED=0
+# After KEYA in prog mode: hexx_y=2019 RLED=1 GLED=0
+# Exited programming mode: hexx_y=2019 RLED=1 GLED=0
 # 
-# --- Test 4: Test Down Button (KEYC) ---
-# Time=1790000: RLED=1 GLED=0 HEX=2000
-# Time=2050000: RLED=1 GLED=0 HEX=1000
+# --- Lock System ---
+# Time=6450000: LED CHANGE - RLED=0 GLED=1
+# After lock: hexx_y=2019 RLED=0 GLED=1
+# Time=7030000: LED CHANGE - RLED=1 GLED=0
+# Time=7050000: LED CHANGE - RLED=0 GLED=1
+# After another KEYA: hexx_y=2019 RLED=0 GLED=1
+# Time=7790000: hexx_y CHANGED to 0000 (hex) =     0 (decimal)
+# Time=7810000: LED CHANGE - RLED=1 GLED=0
+# reset pressed
+# Time=8250000: hexx_y CHANGED to 1000 (hex) =  4096 (decimal)
+# After 1st UP: hexx_y=1000
+# Time=8850000: hexx_y CHANGED to 2000 (hex) =  8192 (decimal)
+# After 2nd UP: hexx_y=2000
+# After 1st ENTRY: hexx_y=2000
+# After 2nd ENTRY: hexx_y=2000
+# Time=10650000: hexx_y CHANGED to 2010 (hex) =  8208 (decimal)
+# After 3rd UP: hexx_y=2010
+# After 3rd ENTRY: hexx_y=2010
+# Time=11850000: hexx_y CHANGED to 2019 (hex) =  8217 (decimal)
+# After DOWN: hexx_y=2019
 # 
-# --- Test 5: Enter Incorrect Code ---
-# Time=2410000: Entering digit 1 (current=0)
-# Time=2930000: RLED=1 GLED=0 HEX=2222
-# Time=2930000: Entering digit 2 (current=0)
-# Time=3610000: RLED=1 GLED=0 HEX=4444
-# Time=3610000: Entering digit 3 (current=0)
-# Time=4450000: RLED=1 GLED=0 HEX=7777
-# Time=4450000: Entering digit 4 (current=0)
-# Time=5650000: RLED=1 GLED=0 HEX=1111
-# PASS: Green LED is OFF (incorrect code)
-# 
-# --- Test 6: Enter Correct Code (Student ID) ---
-# INFO: Adjust these digits to match your student ID!
-# Time=6010000: Entering digit 5 (current=0)
-# Time=7170000: RLED=1 GLED=0 HEX=6666
-# Time=7170000: Entering digit 6 (current=0)
-# Time=8490000: RLED=1 GLED=0 HEX=2222
-# Time=8490000: Entering digit 7 (current=0)
-# Time=9970000: RLED=1 GLED=0 HEX=9999
-# Time=9970000: Entering digit 8 (current=0)
-# Time=11810000: RLED=1 GLED=0 HEX=7777
-# FAIL: Green LED should be ON for correct code
-# 
-# --- Test 7: Programming Mode ---
-# Skipping programming mode test (system not unlocked)
-# 
-# --- Test 8: Test New Code After Programming ---
-# Time=12170000: RLED=1 GLED=0 HEX=7777
-# Time=12170000: Entering digit 9 (current=0)
-# Time=13970000: Entering digit 8 (current=0)
-# Time=15610000: Entering digit 7 (current=0)
-# Time=17090000: Entering digit 6 (current=0)
-# Time=18610000: RLED=1 GLED=0 HEX=7777
-# INFO: Check if programming mode implementation affects this
-# 
-# --- Test 9: System Reset to Default ---
-# Time=19010000: RLED=1 GLED=0 HEX=0000
-# System reset to default code
-# 
-# --- Test 10: Rapid Button Presses ---
-# Time=20070000: RLED=1 GLED=0 HEX=5000
+# --- Validating Code ---
+# Time=12450000: LED CHANGE - RLED=0 GLED=1
+# Time=12450000: hexx_y CHANGED to 0000 (hex) =     0 (decimal)
+# After KEYA: hexx_y=0000 RLED=0 GLED=1
 # 
 # ========================================
-# Testbench Complete
+# Testbench Complete - Check waveform for details
 # ========================================
-# Please verify:
-# 1. Red LED turns ON when locked
-# 2. Green LED turns ON with correct code
-# 3. Display shows entered digits
-# 4. Programming mode allows code change
-# 5. Reset restores default code
-# ========================================
-# 
-# ** Note: $finish    : C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/tests/DigitalSystem_tb.v(320)
-#    Time: 21070 ns  Iteration: 1  Instance: /DigitalLockSystem_tb
+# ** Note: $finish    : C:/Users/ryanm/OneDrive/Desktop/DigitalLock/tests/DigitalLockSystem_tb.v(271)
+#    Time: 13990 ns  Iteration: 1  Instance: /DigitalLockSystem_tb
 # 1
-# Break in Module DigitalLockSystem_tb at C:/Users/ryanm/OneDrive/Desktop/ELEC473-Assignment_1/tests/DigitalSystem_tb.v line 320
-# WARNING: No extended dataflow license exists
+# Break in Module DigitalLockSystem_tb at C:/Users/ryanm/OneDrive/Desktop/DigitalLock/tests/DigitalLockSystem_tb.v line 271

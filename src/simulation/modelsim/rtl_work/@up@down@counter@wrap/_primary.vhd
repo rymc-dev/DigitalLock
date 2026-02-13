@@ -6,6 +6,7 @@ entity UpDownCounterWrap is
         rst_n           : in     vl_logic;
         ud              : in     vl_logic;
         trigger         : in     vl_logic;
+        clear           : in     vl_logic;
         count           : out    vl_logic_vector(3 downto 0)
     );
 end UpDownCounterWrap;

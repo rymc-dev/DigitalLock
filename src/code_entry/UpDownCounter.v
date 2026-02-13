@@ -3,6 +3,7 @@ module UpDownCounterWrap(
 	input wire rst_n,
 	input wire ud,
 	input wire trigger,
+	input wire clear,
 	output reg [3:0] count
 );
 	/*
@@ -14,11 +15,17 @@ module UpDownCounterWrap(
 		min: 0
 		max: 9
 	*/
+	initial begin
+		count = 4'b0000;
+	end
 
 	always @(posedge clk or negedge rst_n) begin
 		if (!rst_n) begin
 			count <= 4'b0000;
 		end
+		else if (clear) begin 
+			count <= 4'b0000;
+		end 
 		else if (trigger) begin
 			if (ud) begin
 				if (count == 4'b1001)
